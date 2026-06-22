@@ -1,4 +1,4 @@
-# text-based-rpg
+# Text Based RPG
 A Python command-line fantasy RPG with a modular room system and world exploration.
 
 ## Overview
