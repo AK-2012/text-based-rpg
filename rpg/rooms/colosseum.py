@@ -13,23 +13,25 @@ def colosseum(self):
                 .strip()
                 .lower()
             )
-            if do == "fight":
-                if "sword" in self.items:  # player can fight
-                    self.fight("guard", random.randint(1, 4), 4)
-                    self.flags.add("killed_guard")
-                else:  # player can't fight
+            while True:
+                if do == "fight":
+                    if "sword" in self.items:  # player can fight
+                        self.fight("guard", random.randint(1, 4), 4)
+                        self.flags.add("killed_guard")
+                        break
+                    else:  # player can't fight
+                        print(
+                            "\nThere is no weapon to fight the guard with. You pitifully attempt to fistfight the armored guard, but he stabs you through the stomach. \n"
+                        )
+                        return "dead"
+                elif do == "run":  # player tries running
                     print(
-                        "\nThere is no weapon to fight the guard with. You pitifully attempt to fistfight the armored guard, but he stabs you through the stomach. \n"
+                        "\nYou try to run away. The guard follows, and your weakened state makes him catch up. You "
+                        "feel a sudden pressure in your stomach, then a burning pain as your body realizes it has been stabbed.\n"
                     )
                     return "dead"
-            elif do == "run":  # player tries running
-                print(
-                    "\nYou try to run away. The guard follows, and your weakened state makes him catch up. You "
-                    "feel a sudden pressure in your stomach, then a burning pain as your body realizes it has been stabbed.\n"
-                )
-                return "dead"
-            else:  # invalid input
-                print("Nothing happens.")
+                else:  # invalid input
+                    print("Nothing happens.")
         if "key" not in self.items:  # haven't taken key
             print(
                 "\nYou notice something shiny in the dead guard's pocket. As you bend down to examine it, you notice it is a key."
