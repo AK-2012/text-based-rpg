@@ -5,7 +5,7 @@ def other_dungeon(self):
     print(
         "When you enter the other dungeon, you notice a door with a lock on it. Although the paths are identical, this dungeon has a closed door. "
     )
-    if "key" in self.items:
+    if "key" in self.items and "entered_other_dungeon" not in self.flags:
         print(
             "The door seems like it can be unlocked by the guard's key you took earlier. "
         )
@@ -54,6 +54,7 @@ def other_dungeon(self):
             ' first time. "We will pray for you. Good luck." You thank them again and head back to '
             "the colosseum. "
         )
+        self.flags.add("entered_other_dungeon")
         return "colosseum"
     else:
         print(
@@ -66,3 +67,4 @@ def other_dungeon(self):
             ' it was nice seeing you again," the elf says. An ethereal smile spreads across his face, dazzling you,'
             " then he shoos you out of the room, sending you walking back to the colosseum. "
         )
+        return "colosseum"

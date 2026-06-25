@@ -26,5 +26,5 @@ def troll_room(self):
     # killed troll, heading back
     print("You return to the room where you fought the troll. The portcullis has opened now. "
     "You pass through and return to the passage where you met the nymph, the portcullis falling"
-    " for the final time as you leave this ancient chamber. ")
+    " for the final time as you leave this ancient chamber. \n")
     return "nymph_passage"
