@@ -19,7 +19,7 @@ def riddle_door(self):
                 "The runes flare brightly, then fade. The door grinds open, revealing a small chamber beyond. "
             )
             print(
-                "On a pedestal in the center of the room rests an ornate key shaped like a dragon."
+                "On a gilded pedestal in the center of the room rests an ornate key shaped like a dragon."
             )
             if "dragonhold key" not in self.items:
                 self.items.append("dragonhold key")
@@ -27,12 +27,11 @@ def riddle_door(self):
                     f"{Fore.YELLOW}{Style.BRIGHT}\nMysterious key added to inventory.\n"
                 )
             print(
-                "With the key in hand, you leave the chamber and head back to the King's quarters."
+                "With the key in hand, you leave the chamber and return to the room where you fought the troll. "
             )
-            return "kings_quarters"
-        else:
-            print(
-                "The runes glow a vicious red. Your chest tightens as heat blooms under your skin. "
-                "In an instant, your body is consumed by invisible flame.\n"
-            )
-            return "dead"
+            return "troll_room"
+        print( # wrong answer
+            "The runes glow a vicious red. Your chest tightens as heat blooms under your skin. "
+            "In an instant, your body is consumed by invisible flame.\n"
+        )
+        return "dead"
