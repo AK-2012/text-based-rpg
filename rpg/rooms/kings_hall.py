@@ -79,6 +79,7 @@ def kings_hall(self):
                     "your predecessor, but it will be no more. Meet the same fate as the ones "
                     'suffering under your hand."'
                 )
+            input(f"{Fore.BLUE}{Style.BRIGHT}Press any key to continue. {Style.RESET_ALL}")
             print(
                 "\nYou flick your hand. Nothing happens at first, but then the king starts"
                 "convulsing violently. You clench your fist, and he curls up into a ball. "
@@ -86,8 +87,7 @@ def kings_hall(self):
                 " makes the king shriek, and then he is moving no more. You take his crown and "
                 "leave the room with the guards still frozen.\n"
             )
-            print(f"{Fore.YELLOW}{Style.BRIGHT}\nKing's crown added to inventory.\n")
-            self.items.append("crown")
+            self.flags.add("killed_king")
             return "stairs"
         # player doesn't have witch's eye, dies
         else:

@@ -10,7 +10,7 @@ def hall(self):
         " who survive to serve a purpose, you do not attack. "
     )
     # king not dead yet
-    if "crown" not in self.items:
+    if "killed_king" not in self.flags:
         print(
             'The griffin speaks. "I guard this passage beyond the Room o\' Doom. Only those who prove worthy may pass."'
         )

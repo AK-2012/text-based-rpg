@@ -37,7 +37,7 @@ def four_seasons_room(self):
             .lower()
         )
     print("You reach out to cradle the Heart.\n")
-    if "crown" not in self.items:
+    if "killed_king" not in self.flags:
         print(
             "\nThe Heart rejects you, unconvinced of your valor and dignity. A heavenly feeling"
             " spreads through you, then consumes you."
