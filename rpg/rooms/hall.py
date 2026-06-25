@@ -1,28 +1,30 @@
+from rpg.rooms import room_o_doom
 from .constants import *
 
 
 def hall(self):
     print(
         "You enter the hall. It is lit with torches, but shadows still creep in the corners. It is colder here."
+        " Spiders scuttle in the walls, webs brushing against you. Dust clings to the floor, and a musty smell fills the air."
+        " You can hear the occasional drip of water from the ceiling. "
     )
     print(
-        "After walking for a little bit, you encounter a griffin. Remembering that they are nonviolent creatures"
+        "After walking for a little bit, you encounter a griffin. Remembering they are non-violent creatures"
         " who survive to serve a purpose, you do not attack. "
     )
     # king not dead yet
     if "killed_king" not in self.flags:
         print(
-            'The griffin speaks. "I guard this passage beyond the Room o\' Doom. Only those who prove worthy may pass."'
+            'The griffin speaks. "I guard this passage to the outside. Only those who prove worthy may pass."'
         )
-        # elf's blessing/touch/staff
-        if "staff" in self.items:
+        if "sold_staff" in self.flags: # elf's touch but sold staff
             print(
-                'The griffin eyes you. "An elf\'s touch and blessing... very well, prove your worth with a number."'
+                'The griffin eyes you. "An elf\'s blessing... very well, prove your worth."'
             )
             print(
                 "The griffin is thinking of a number between 1 and 10. Guess correctly to pass."
             )
-            secret_number = random.randint(1, 10)
+            secret_number = random.randint(1, 10) # guess the number
             while True:
                 try:
                     guess = int(
@@ -38,16 +40,24 @@ def hall(self):
                         )
                         return "four_seasons_room"
                     else:
-                        print("Wrong! The griffin shrieks.")
+                        print("Wrong! The griffin shrieks. \"You shall not pass! Turn back and gain "
+                        "power and wisdom. \" You turn back toward the Room O' Doom fearfully.")
+                        return "room_o_doom"
                 except ValueError:
                     print("Enter a valid number between 1 and 10.")
+        elif "staff" in self.items: # has elf staff, hasn't sold
+            print(
+                "The griffin seems torn. \"An elf\'s staff and blessing, but a duty "
+                "to fulfill...\" Suddenly, it looks up with conviction. "
+                "\"You are destined for greater things than this. Turn back."
+                " Kill our malevolent king sitting upon his thorny throne. \""
+            )
         # No staff
         else:
             print(
                 'The griffin blocks your path. "You lack power and wisdom. You are unworthy. Turn back."'
             )
-        # player is a failure
-        while True:
+        while True: # they better not defy the griffin
             go = (
                 input(
                     f"{Fore.BLUE}{Style.BRIGHT}\nDo you turn back or try to pass anyway? {Style.RESET_ALL}"
@@ -63,9 +73,8 @@ def hall(self):
                 return "dead"
             else:
                 print("The griffin awaits your decision.")
-    # king do be dead
-    else:
+    else: # king dead
         print(
-            'The griffin speaks. "I guard this path to the outside, and you have proven worthy. Pass."'
+            'The griffin speaks. "I guard this path to the outside, and you have proven worthy. You may pass."'
         )
         return "four_seasons_room"

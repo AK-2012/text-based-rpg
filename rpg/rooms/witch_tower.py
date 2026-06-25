@@ -31,8 +31,7 @@ def witch_tower(self):
                 return "dragonhold"
             else:
                 print("Nothing happens.")
-    # no eye...yet
-    print(
+    print( # no eye...yet
         "The woman turns her head toward you, though her covered eyes could not possibly see. "
         '"So, another plaything of the king slips through his fingers," she says, voice dry and amused. '
         '"He keeps me here, chained by oaths and my own magic, but even blind I see more than he." '
@@ -41,6 +40,8 @@ def witch_tower(self):
     # if the player got the elf staff. :) just something for some ✨FLAIR✨
     if "staff" in self.items:
         print('Her head tilts slightly. "An elf\'s touch lingers on you. Odd."')
+    if "sold_staff" in self.flags:
+        print("She clicks her tongue. \"I smell greed, yet an elf's blessing lies on you.\"")
     # Main choice loop
     while True:
         print(

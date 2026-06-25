@@ -41,18 +41,19 @@ def rich(self):
                 " of secrets. I'd say this is just rumour if I hadn't heard more than a few people talking about"
                 " it. Apparently, on the highest floor, a witch's residency is located, and there's also a chained"
                 " dragon. I believe the king's tryna force them to do his bidding, but that's just speculation; "
-                "who knows? But back to the witch -- it's said that she's blind since the king managed to take out"
+                "who knows? But back to the witch -- it's said that she's blind since the king took out"
                 " her eyes. He's still scared as a dog with its tail between its legs when it comes to her, but "
                 "it's said that if somebody else can take an eye of hers, they get... inhuman powers.\" He looks"
-                " around you. \"You might even be able to get out of the castle. But don't tell anybody I told you"
-                ' that. Now shoo."'
+                " around you. \"You might even be able to get out of the castle. Or kill him. But don't tell anybody"
+                ' I told you that. Now shoo."'
             )
+            self.items.remove("staff")
+            self.flags.add("sold_staff")
         else:
             print(
                 "The man sighs. \"If that's what you want. My offer still stands if you're ever interested.\""
             )
-    # no elf staff
-    else:
+    else: # no elf staff
         print(
             "You don't have anything useful the man might like. He clicks his tongue and shoos you away from the stall. "
         )

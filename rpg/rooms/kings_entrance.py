@@ -26,7 +26,7 @@ def kings_entrance(self):
             .strip()
             .lower()
         )
-        if "stairs" in go or "stairwell" in go:
+        if "stair" in go:
             return "stairs"
         elif "colosseum" in go:
             return "colosseum"

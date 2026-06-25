@@ -28,7 +28,7 @@ def four_seasons_room(self):
         .strip()
         .lower()
     )
-    while reach not in ["y", "yes"]:
+    while reach not in ["y", "yes", "n", "no"]:
         reach = (
             input(
                 f"{Fore.BLUE}{Style.BRIGHT}The Heart wants an answer. \n{Style.RESET_ALL}"
@@ -36,16 +36,25 @@ def four_seasons_room(self):
             .strip()
             .lower()
         )
-    print("You reach out to cradle the Heart.\n")
-    if "killed_king" not in self.flags:
-        print(
-            "\nThe Heart rejects you, unconvinced of your valor and dignity. A heavenly feeling"
-            " spreads through you, then consumes you."
+    if reach in ["y", "yes"]:
+        print("You reach out to cradle the Heart.\n")
+        if "killed_king" not in self.flags: # hasn't killed king
+            print(
+                "\nThe Heart rejects you, unconvinced of your valor and dignity. A heavenly feeling"
+                " spreads through you, then consumes you."
+            )
+            return "dead"
+        print( # killed king
+            "\nThe Heart accepts you, convinced of your valor and dignity. You smile looking down at it. "
         )
-        return "dead"
-    print(
-        "\nThe Heart accepts you, convinced of your valor and dignity. You smile looking down at it. "
-    )
+        self.flags.add("has_heart")
+    elif reach in ["n", "no"]:
+        if "killed_king" not in self.flags:
+            print("The Heart blazes vermillion, seemingly annoyed, but nothing happens. "
+            "You made a wise decision as one with neither valor nor dignity. ")
+        else:
+            print("The Heart turns a soft shade of blue, looking sad... For a heart. "
+            "You side-eye it and turn away, reminding yourself not to be greedy. ")
     print(
         "You head out of the room into the next corridor. A triangular room opens up before you. "
     )

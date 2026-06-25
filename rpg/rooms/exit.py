@@ -27,6 +27,8 @@ def exit(self):
                 .lower()
             )
         if go in ["y", "yes"]:
+            if "killed_king" not in self.flags:
+                return "win_cowardly"
             return "win_witch"
         print("\nYou stay in the room for a little while longer.\n")
         sleep(3)

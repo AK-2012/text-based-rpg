@@ -6,14 +6,14 @@ def colosseum(self):
     while True:
         if "killed_guard" not in self.flags:  # first guard meeting
             print("A guard notices you. \n")
-            do = (
-                input(
-                    f"{Fore.BLUE}{Style.BRIGHT}Do you fight or run? {Style.RESET_ALL}"
-                )
-                .strip()
-                .lower()
-            )
             while True:
+                do = (
+                    input(
+                        f"{Fore.BLUE}{Style.BRIGHT}Do you fight or run? {Style.RESET_ALL}"
+                    )
+                    .strip()
+                    .lower()
+                )
                 if do == "fight":
                     if "sword" in self.items:  # player can fight
                         self.fight("guard", random.randint(1, 4), 4)

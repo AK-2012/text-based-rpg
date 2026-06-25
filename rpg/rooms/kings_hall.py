@@ -4,7 +4,7 @@ from .constants import *
 def kings_hall(self):
     print("A large set of ornate wooden doors lay before you.")
     # player hasn't killed king.
-    if "crown" not in self.items:
+    if "killed_king" not in self.flags:
         if "eye" not in self.items:
             print("You feel like you shouldn't go in.")
         while True:

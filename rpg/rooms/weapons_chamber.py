@@ -3,7 +3,7 @@ from .constants import *
 
 def weapons_chamber(self):
     if any(weapon in self.items for weapon in ["longsword", "dagger", "rapier"]):
-        print("You already got a weapon, so you return to the witch's toewr. ")
+        print("You already got a weapon, so you return to the witch's tower. ")
         return "witch_tower"
     print(
         "You enter an armory filled to the brim with weapons. Most are under lock and key, "
