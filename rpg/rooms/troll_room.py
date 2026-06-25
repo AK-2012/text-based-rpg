@@ -2,37 +2,29 @@ from .constants import *
 
 
 def troll_room(self):
-    print(
-        "You follow the newly opened passage. The air grows thick with the smell of sweat and old blood. "
-        "You step into a cavernous chamber where a hulking troll stands guard before a heavy stone door.\n"
-    )
-    print(
-        "The troll turns toward you, baring jagged teeth, and hefts a massive club.\n"
-    )
-    # player doesn't have enough hearts
-    if self.hearts < 5:
+    if "killed_troll" not in self.flags:
         print(
-            "You feel a spike of terror as the troll charges. You are too weak to stand "
-            "a chance. The club crashes down, and everything goes dark.\n"
+            "You follow the newly opened passage. The air grows thick with the smell of sweat and old blood. "
+            "You step into a cavernous chamber where a hulking troll stands guard before a heavy stone door.\n"
         )
-        return "dead"
-    print(
-        "You ground yourself and charge. Steel clashes against flesh as you battle the troll.\n"
-    )
-    # simple battle: trade a random amount of damage, but you always eventually win if you qualify
-    for _ in range(2):
-        dmg = random.randint(1, 2)
-        self.hearts -= dmg
-        print(f"The troll lands a crushing blow, dealing {dmg} damage. ")
-        input(f"{Fore.BLUE}{Style.BRIGHT}Press something to attack. {Style.RESET_ALL}")
-        dmg = random.randint(1, self.attack)
-        print(f"You deal {dmg} damage. ")
-    print("The troll is dead. ")
-    print(
-        f"{Fore.GREEN}{Style.BRIGHT}You stagger, breathing hard. You have {self.hearts} hearts left."
-    )
-    print(
-        "Behind you, the passage collapses with a deafening rumble. There is no way back, "
-        "only the stone door ahead.\n"
-    )
-    return "riddle_door"
+        print(
+            "The troll turns toward you, baring jagged teeth, and hefts a massive club.\n"
+        )
+        print(
+            "You ground yourself and charge. Steel clashes against flesh as you battle the troll.\n"
+        )
+        self.fight(self, "troll", random.randint(1, 3), 8)
+        self.flags.add("killed_troll")
+        print(
+            f"{Fore.GREEN}{Style.BRIGHT}You stagger, breathing hard. You have {self.hearts} hearts left."
+        )
+        print(
+            "Behind you, a portcullis falls with a deafening rumble of old stone. "
+            "There is no way back, only the stone door ahead.\n"
+        )
+        return "riddle_door"
+    # killed troll, heading back
+    print("You return to the room where you fought the troll. The portcullis has opened now. "
+    "You pass through and return to the passage where you met the nymph, the portcullis falling"
+    " for the final time as you leave this ancient chamber. ")
+    return "nymph_passage"
