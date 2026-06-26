@@ -3,7 +3,7 @@ from .constants import *
 
 def win_cowardly(self):
     print(
-        "As you exit the castle, you feel oddly empty. You realize there really was nothing you did. "
+        "As you exit the castle, you feel oddly empty. You realize there really was nothing you changed. "
         "The king will still exploit the people, and what happened to your village will happen to "
         "others, again and again. Selfishly, you turn away from the castle and run into the woods beyond. "
         )
