@@ -54,6 +54,6 @@ def slums(self):
         elif "market" in go:
             return "market"
         elif "rich" in go:
-            return "rich neighborhood"
+            return "rich"
         else:
             print("Nothing happens.")
