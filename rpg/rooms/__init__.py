@@ -25,3 +25,4 @@ from .exit import exit
 from .dead import dead
 from .win_dragon import win_dragon
 from .win_witch import win_witch
+from .win_cowardly import win_cowardly

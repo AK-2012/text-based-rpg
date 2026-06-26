@@ -16,7 +16,7 @@ def colosseum(self):
                 )
                 if do == "fight":
                     if "sword" in self.items:  # player can fight
-                        self.fight("guard", random.randint(1, 4), 4)
+                        self.fight("guard", random.randint(1, 3), 4)
                         self.flags.add("killed_guard")
                         break
                     else:  # player can't fight

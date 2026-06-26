@@ -9,7 +9,7 @@ def slums(self):
     if self.dead_check():
         return "dead"
     print(f"{Fore.GREEN}{Style.BRIGHT}You have {self.hearts} hearts left. ")
-    if "flyer" in self.items and "coins" not in self.items:
+    if "has_daughter_quest" in self.flags and "rescued_daughter" not in self.flags:
         print(
             "\nYou see some suspicious-looking people a few walks away. They glare at you. You pull out the flyer, and"
             ' they advance upon you. "Do you have any business with us?" A burly man asks. You tell them you\'re searching'
@@ -37,7 +37,7 @@ def slums(self):
                     "father, and head back to the market. She clutches your hand on the way, eyeing "
                     "the people around you warily. "
                 )
-                self.items.append("girl")
+                self.flags.add("has_daughter")
                 return "market"
             else:
                 print("Nothing happens. ")

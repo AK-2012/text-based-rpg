@@ -1,4 +1,3 @@
-from rpg.rooms import room_o_doom
 from .constants import *
 
 

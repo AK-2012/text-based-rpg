@@ -13,8 +13,7 @@ def market(self):
         "A quick path through the alleys can lead you to the slums, or heading a little further up the market path can "
         "lead you to the rich neighborhood. Back where you came is the colosseum's spectator entrance. "
     )
-    # if the man's daughter is still kidnapped
-    if "coins" not in self.items:
+    if "rescued_daughter" not in self.flags: # if the man's daughter is still kidnapped
         print(
             "Off in the corner a dewy-eyed, middle-aged man with a dejected look on his face is handing out flyers. "
         )
@@ -26,10 +25,10 @@ def market(self):
             .strip()
             .lower()
         )
-        # we do not want the player walking around with the dad's girl. that is unsafe and concerning.
+        # we do not want the player walking around with the dad's kid. that is unsafe and concerning.
         if (
             not any(word in go for word in ["man", "guy", "flyer"])
-            and "girl" in self.items
+            and "has_daughter" in self.flags
         ):
             print("You might want to go to the girl's father...")
             continue
@@ -37,7 +36,7 @@ def market(self):
             # start daughter quest
             if (
                 any(word in go for word in ["man", "guy", "flyer"])
-                and "coins" not in self.items
+                and "rescued_daughter" not in self.flags
             ):
                 break
             # leave
@@ -51,7 +50,7 @@ def market(self):
             else:
                 print("Nothing happens.")
     # quest for daughter -- 1st encounter
-    if "flyer" not in self.items:
+    if "has_daughter_quest" not in self.flags:
         print(
             "\nYou head over to the dejected, dewy-eyed, middle-aged man. You ask if he's okay. "
         )
@@ -84,22 +83,22 @@ def market(self):
                 'probably get something to eat and maybe some new clothes, too. Thank you." Before you leave, '
                 "he hands you a flyer with a picture of his daughter. You tuck it away in your pocket."
             )
-            self.items.append("flyer")
-    # return daughter
+            self.flags.add("has_daughter_quest")
     else:
-        if "girl" in self.items:
+        if "has_daughter" in self.flags: # return daughter
             print(
                 "The man's eyes light up as you head over with his daughter. A smile lights up his face. "
                 "He thanks you profusely while he and his daughter have a heartfelt reunion. He hands you a small bag of coins."
             )
-            self.items.append("coins")
-            self.items.remove("girl")
+            self.flags.add("rescued_daughter")
+            self.flags.remove("has_daughter")
+            self.flags.remove("has_daughter_quest")
             self.eat()
             print(
                 f"{Fore.GREEN}{Style.BRIGHT}You head over to a stall and buy some food. You ravenously dig in, and "
                 f"it's over before you know it. You have {self.hearts} hearts now."
             )
-        else:
+        else: # returns w/o daughter
             print(
                 "\nThe man says, "
                 '"You still haven\'t found her? Okay... Please do find her soon. I hope nothing too bad has happened to her. Please do find her. Please."'
@@ -119,6 +118,5 @@ def market(self):
             return "rich"
         elif ("spectator" in go and "entrance" in go) or "colosseum" in go:
             return "spectator_entrance"
-        # data validation
-        else:
+        else: # invalid inputs
             print("Nothing happens.")
