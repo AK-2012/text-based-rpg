@@ -8,7 +8,8 @@ def kings_entrance(self):
             "\nWalking up to the King's entrance, you see a few guards strolling about. One of them notices you"
             " and alerts the other two. They run towards you, and you're forced to fight. "
         )
-        self.fight("guards", 1, random.randint(7,12))
+        if self.fight("guards", 1, random.randint(7,12)) == "dead":
+            return "dead"
         self.flags.add("killed_guards")
         print(
             "\nNow that the guards have been eliminated, you notice a stairwell in the back of the room."

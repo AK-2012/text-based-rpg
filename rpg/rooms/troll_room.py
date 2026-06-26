@@ -13,7 +13,8 @@ def troll_room(self):
         print(
             "You ground yourself and charge. Steel clashes against flesh as you battle the troll.\n"
         )
-        self.fight("troll", random.randint(1, 3), 8)
+        if self.fight("troll", random.randint(1, 3), 8) == "dead":
+            return "dead"
         self.flags.add("killed_troll")
         print(
             f"{Fore.GREEN}{Style.BRIGHT}You stagger, breathing hard. You have {self.hearts} hearts left."
